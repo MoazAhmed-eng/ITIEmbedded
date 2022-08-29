@@ -1,0 +1,123 @@
+/********************************************************************************/
+/**    File Name: LCD.h                                                         */
+/**                                                                             */
+/**  Description: Implementation of the LED contain configuration for the module*/
+/**-----------------------------------------------------------------------------*/
+/**  CODING LANGUAGE :  C                                                       */
+/**  TARGET          :  Atmega 32                                               */
+/**-----------------------------------------------------------------------------*/
+/**               C O P Y R I G H T                                             */
+/**-----------------------------------------------------------------------------*/
+/** Copyright (c) 2022 by ITI .       All rights reserved.                      */
+/**                                                                             */
+/** This software is copyright protected and proprietary                        */
+/** to ITI.                                                                     */
+/**-----------------------------------------------------------------------------*/
+/**               A U T H O R   I D E N T I T Y                                 */
+/**-----------------------------------------------------------------------------*/
+/** ShortName    Name                      Company                              */
+/** --------     ---------------------     -------------------------------------*/
+/** aaboelno     Ahmed Abo Elnour          ITI.                                 */
+/**-----------------------------------------------------------------------------*/
+/**               R E V I S I O N   H I S T O R Y                               */
+/**-----------------------------------------------------------------------------*/
+/** Date        Version   Author       Description                              */
+/** ----------  --------  ------      ------------------------------------------*/
+/** 22/08/2022   0.1       aaboelno     Initial Creation                        */
+/********************************************************************************/
+
+
+#ifndef LCD_PRIV_H
+#define LCD_PRIV_H
+
+
+#define LCD_u8ONE_LINE  		((uint8) 0x00)
+#define LCD_u8TWO_LINE  		((uint8) 0x01)
+                                
+#define LCD_u8CHAR_FONT_5X7   	((uint8) 0x00)
+#define LCD_u8CHAR_FONT_5X11  	((uint8) 0x01)
+                                
+                                
+#define LCD_u8DISPLAY_OFF  		((uint8) 0x00)
+#define LCD_u8DISPLAY_ON   		((uint8) 0x01)
+                                
+                                
+#define LCD_u8CURSOR_OFF  		((uint8) 0x00)
+#define LCD_u8CURSOR_ON   		((uint8) 0x01)
+		                        
+#define LCD_u8BLINK_OFF   		((uint8) 0x00)
+#define LCD_u8BLINK_ON    		((uint8) 0x01)
+		                        
+		                        
+#define LCD_u8MODE_4BIT   		((uint8) 0x00)
+#define LCD_u8MODE_8BIT   		((uint8) 0x01)
+		                        
+#define LCD_u8DECREMENT   		((uint8) 0x00)
+#define LCD_u8INCREMENT   		((uint8) 0x01)
+		                        
+		                        
+#define LCD_u8SHIFT_OFF   		((uint8) 0x00)
+#define LCD_u8SHIFT_ON    		((uint8) 0x01)
+
+
+
+#define MODE_8BIT_FUNCTION_SET 			((uint8) 0x30)
+#define MODE_8BIT_DISPLAY_CNTRL			((uint8) 0x08)
+#define MODE_8BIT_ENTRY_MODE_SET		((uint8) 0x04)
+
+#define MODE_4BIT_FUNCTIONS_SET_CMD1	((uint8) 0x20)
+#define MODE_4BIT_FUNCTIONS_SET_CMD2    ((uint8) 0x20)
+#define MODE_4BIT_FUNCTIONS_SET_CMD3    ((uint8) 0x00)
+
+#define MODE_4BIT_DISPLAY_CNTRL_CMD1	((uint8) 0x00)
+#define MODE_4BIT_DISPLAY_CNTRL_CMD2	((uint8) 0x80)
+
+#define MODE_4BIT_DISPLAY_CLEAR_CMD1	((uint8) 0x00)
+#define MODE_4BIT_DISPLAY_CLEAR_CMD2    ((uint8) 0x10)
+
+#define MODE_4BIT_ENTRY_MODE_SET_CMD1	((uint8) 0x00)
+#define MODE_4BIT_ENTRY_MODE_SET_CMD2	((uint8) 0x40)
+
+
+#define LCD_1ST_LINE_BASE           	(0x00)
+#define LCD_2ND_LINE_BASE           	(0x40)
+#define LCD_3RD_LINE_BASE           	(0x10)
+#define LCD_4TH_LINE_BASE           	(0x50)
+
+
+#define LCD_DDRAM_CONST             	(0x80)
+
+
+
+
+typedef struct {
+	uint8 u8PanLine      : 1 ;
+	uint8 u8CharFont     : 1 ;
+	uint8 u8Display      : 1 ;
+	uint8 u8Cursor       : 1 ;
+	uint8 u8Blink        : 1 ;
+	uint8 u8Mode         : 1 ;
+	uint8 u8Increment    : 1 ;
+	uint8 u8DisplayShift : 1 ;
+}tstrLcdOpCfg;
+
+typedef struct 
+{
+	
+	uint8      u8RegisterSelect ;
+	uint8      u8ReadWrite      ;
+	uint8      u8EnableLatch    ;
+	uint8      u8DataPinMapping [8] ;
+	
+	
+}tstrLcdPinCfg;
+
+typedef struct 
+{
+	tstrLcdOpCfg     strLcdOpcfg ;
+	tstrLcdPinCfg    strLcdPinCfg ;
+}tstrLcdCfg;
+
+tstrLcdCfg LCD_astrCfg [LCD_MAX_NUM] ;
+
+#endif
