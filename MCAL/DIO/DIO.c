@@ -304,6 +304,43 @@ tenuErrorStatus DIO_enuTogglePin(uint8 u8LedMappingCpy)
 
 
 
+tenuErrorStatus DIO_enuReadPinDir(uint8 u8PinNumCpy, uint8 * pu8PinValueCpy)
+{
+	tenuErrorStatus enuReturnStautsLoc = E_OK;
+	
+	if(pu8PinValueCpy != NULL_PTR)
+	{
+		if(u8PinNumCpy >= DIO_u8_PIN_0 && u8PinNumCpy <= DIO_u8_PIN_7 )
+		{
+			*pu8PinValueCpy = GET_BIT(DDRA , u8PinNumCpy);
+		}
+		else if(u8PinNumCpy >= DIO_u8_PIN_8 && u8PinNumCpy <= DIO_u8_PIN_15 )
+		{
+			*pu8PinValueCpy = GET_BIT(DDRB , u8PinNumCpy % DIO_u8PIN_SIZE);
+		}
+		else if(u8PinNumCpy >= DIO_u8_PIN_16 && u8PinNumCpy <= DIO_u8_PIN_23)
+		{
+			*pu8PinValueCpy = GET_BIT(DDRC , u8PinNumCpy % DIO_u8PIN_SIZE);
+		}
+		else if(u8PinNumCpy >= DIO_u8_PIN_24 && u8PinNumCpy <= DIO_u8_PIN_31)
+		{
+			*pu8PinValueCpy = GET_BIT(DDRD , u8PinNumCpy % DIO_u8PIN_SIZE);
+		}
+		else
+		{
+			enuReturnStautsLoc = E_NOK_PARAM_OUT_OF_RANGE;
+		}
+	}
+	else
+	{
+		enuReturnStautsLoc = E_NOK_PARAM_NULL_POINTER;
+	}
+	return enuReturnStautsLoc;
+}
+
+
+
+
 
 
 

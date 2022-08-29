@@ -97,7 +97,10 @@ tenuErrorStatus DIO_enuWriteBus(tstrPinMapping * pastrPinMappingCpy , uint8 u8Si
 tenuErrorStatus DIO_enuReadBus(tstrPinMapping * pastrPinMappingCpy , uint8 u8SizeCpy);
 /* Description: function to set the direction of specofic pin DIO_u8OUTPUT or DIO_u8INPUT*/
 tenuErrorStatus DIO_enuWritePinDir(uint8 u8PinNumCpy , uint8 u8PinDirCpy);
-
+/* Description: function to set change the state of specific pin from high to low and vice versa*/
 tenuErrorStatus DIO_enuTogglePin(uint8 u8LedMappingCpy);
+
+/* Description: function to read the value on the DDR (0 or 1) starting from pin 0 to pin 31*/
+tenuErrorStatus DIO_enuReadPinDir(uint8 u8PinNumCpy, uint8 * pu8PinValueCpy);
 
 #endif  
