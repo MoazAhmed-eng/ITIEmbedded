@@ -49,15 +49,24 @@ void MOTOR_u8voidCheck(void)
 			MOTOR_astrCfg[u8CntrLoc].u8InitializationState = INIT_FAILED;
 
 		}
-		DIO_enuReadPinDir(MOTOR_astrCfg[u8CntrLoc].u8GndPinMapping,&u8ReadLoc);
-		if(u8ReadLoc == DIO_u8OUTPUT)
+		switch(MOTOR_astrCfg[u8CntrLoc].u8InitializationState)
 		{
-			MOTOR_astrCfg[u8CntrLoc].u8InitializationState = INIT_PASSED;
-		}
-		else
-		{
-			MOTOR_astrCfg[u8CntrLoc].u8InitializationState = INIT_FAILED;
-
+			case INIT_PASSED: 
+				DIO_enuReadPinDir(MOTOR_astrCfg[u8CntrLoc].u8GndPinMapping,&u8ReadLoc);
+				if(u8ReadLoc == DIO_u8OUTPUT)
+				{
+					MOTOR_astrCfg[u8CntrLoc].u8InitializationState = INIT_PASSED;
+				}
+				else
+				{
+					MOTOR_astrCfg[u8CntrLoc].u8InitializationState = INIT_FAILED;
+		
+				}
+			break;
+			case INIT_FAILED:
+			break;
+			default:
+			break;
 		}
 		
 	}
