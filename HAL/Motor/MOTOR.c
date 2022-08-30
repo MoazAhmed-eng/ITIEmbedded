@@ -74,6 +74,7 @@ void MOTOR_u8voidCheck(void)
 
 void MOTOR_voidInit(void)
 {
+	MOTOR_u8voidCheck();
 	uint8 u8CntrLoc ; 
 	for(u8CntrLoc = 0 u8CntrLoc < MOTOR_MAX_NUM ; u8CntrLoc++)
 	{
@@ -110,7 +111,9 @@ tenuErrorStatus MOTOR_enuSetMode(uint8 u8MotorNumCpy, uint8 u8ModeCpy)
 	
 	if(u8MotorNumCpy < MOTOR_MAX_NUM)
 	{
-		switch(u8ModeCpy)
+		if(MOTOR_astrCfg[u8CntrLoc].u8InitializationState == INIT_PASSED)
+		{
+			switch(u8ModeCpy)
 			{
 				case MOTOR_NORMAL_MODE:
 					DIO_enuWritePin(MOTOR_astrCfg[u8MotorNumCpy].u8VccPinMapping,DIO_u8HIGH);
@@ -128,6 +131,15 @@ tenuErrorStatus MOTOR_enuSetMode(uint8 u8MotorNumCpy, uint8 u8ModeCpy)
 				enuErrorStateLoc = E_NOK_CONFIG_PARM_ERROR;
 				break;
 			}
+		}
+		else if(MOTOR_astrCfg[u8CntrLoc].u8InitializationState == INIT_FAILED)
+		{
+			enuErrorStateLoc = E_NOK;
+		}
+		else
+		{
+			enuErrorStateLoc = E_NOK_CONFIG_PARM_ERROR;
+		}
 	}
 	else
 	{
