@@ -1,6 +1,14 @@
 
-uint8 u8BtnEnableBypass 	;
-uint8 BTN_u8ReadPinBypass   ;
+#include "Std_types.h"
+#include "bitManipulation.h"
+
+
+#include "DIO.h"
+#include "BTN.h"
+#include "BTN_cfg.h"
+#include "BTN_priv.h"
+
+
 
 void BTN_voidInit(void)
 {
@@ -8,7 +16,7 @@ void BTN_voidInit(void)
 	for(u8CntrLoc = 0 ; u8CntrLoc < BTN_MAX_NUM ; u8CntrLoc++)
 	{
 		DIO_enuPullWrite(BTN_tstr[u8CntrLoc].PinMap,BTN_tstr[u8CntrLoc].Mode);
-		DIO_enuWritePinDir(BTN_tstr[u8CntrLoc].PinMap,DIO_INPUT);
+
 	}
 }
 
@@ -35,19 +43,9 @@ tenuErrorStatus  BTN_IsPressed(uint8 u8BtnNumCpy , uint8 * u8pBtnPressedCpy)
 				break;
 				
 				case PULL_DOWN:
-					#ifdef TEST_MODE_ON
-					if(u8BtnEnableBypass == 1)
-					{
-						*u8pBtnPressedCpy = BTN_u8ReadPinBypass;
-					}
-					
-					else
-					{
-					#endif
+
 						DIO_enuReadPin(BTN_tstr[u8BtnNumCpy].PinMap,u8pBtnPressedCpy);
-					#ifdef	TEST_MODE_ON
-					}
-					#endif
+
 				break;
 				
 				default: 

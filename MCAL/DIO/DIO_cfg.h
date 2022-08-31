@@ -34,7 +34,7 @@
 /* Values ( DIO_OUTPUT , DIO_INPUT )    */
 
 /* Group A*/
-#define DIO_u8DIR_PIN_0		DIO_OUTPUT
+#define DIO_u8DIR_PIN_0		DIO_INPUT
 #define DIO_u8DIR_PIN_1     DIO_OUTPUT
 #define DIO_u8DIR_PIN_2     DIO_OUTPUT
 #define DIO_u8DIR_PIN_3     DIO_OUTPUT

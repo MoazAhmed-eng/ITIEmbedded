@@ -38,7 +38,7 @@
 
 tstrPinMappingCfg LED_astrLedPinMapping[LED_MAX_NUM] = 
 {
-	{DIO_u8_PIN_18 , LED_u8NORMAL },
+	{DIO_u8_PIN_1 , LED_u8NORMAL },
 	{DIO_u8_PIN_23 , LED_u8NORMAL },
 	{DIO_u8_PIN_27 , LED_u8NORMAL },
 	{DIO_u8_PIN_22 , LED_u8REVERSE},
