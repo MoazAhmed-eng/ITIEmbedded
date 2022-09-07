@@ -12,6 +12,12 @@
 #define NULL_PTR     ((void *)0) 
 
 
+typedef void (*pf)(void);
+typedef void (*tvpf) (pf) ;
+typedef uint16 (*tu16pf) (void) ;
+typedef void (*tpfu8) (uint8) ;
+
+
 typedef    unsigned       char 	   uint8; 
 typedef    signed         char 	   sint8;
 typedef    unsigned short int      uint16;

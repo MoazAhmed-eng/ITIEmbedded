@@ -50,7 +50,7 @@ tenuErrorStatus LCD_enuWriteData (uint8 u8LcdNumCpy , uint8 *  pu8DataCpy);
 
 tenuErrorStatus LCD_enuCreateCustChar (uint8 u8LcdNumCpy , uint8 *pu8PatternCpy , uint8 u8Location) ;
 
-tenuErrorStatus LCD_RowCol_Select(uint8 u8RowCpy, uint8 u8ColCpy);
+tenuErrorStatus LCD_RowCol_Select(uint8 u8LcdNumCpy ,uint8 u8RowCpy, uint8 u8ColCpy);
 
 #endif
 

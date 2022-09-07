@@ -202,23 +202,23 @@ tenuErrorStatus LCD_RowCol_Select(uint8 u8LcdNumCpy ,uint8 u8RowCpy, uint8 u8Col
 {
 	uint8 u8LineAddressLoc = 0;
 		
-	switch(Row)
+	switch(u8RowCpy)
 	{
 		case 0:
 			/* !Comment: When Writing To LCD 1st Col The Base Address is 0x00 */
-			u8LineAddressLoc = Col | LCD_1ST_LINE_BASE;
+			u8LineAddressLoc = u8ColCpy | LCD_1ST_LINE_BASE;
 			break;
 		case 1:
 			/* !Comment: When Writing To LCD 2nd Col The Base Address is 0x40 */
-			u8LineAddressLoc = Col | LCD_2ND_LINE_BASE;
+			u8LineAddressLoc = u8ColCpy | LCD_2ND_LINE_BASE;
 			break;
 		case 2:
 			/* !Comment: When Writing To LCD 1st Col The Base Address is 0x10 */
-			u8LineAddressLoc = Col | LCD_3RD_LINE_BASE;
+			u8LineAddressLoc = u8ColCpy | LCD_3RD_LINE_BASE;
 			break;
 		case 3:
 			/* !Comment: When Writing To LCD 1st Col The Base Address is 0x50 */
-			u8LineAddressLoc = Col | LCD_4TH_LINE_BASE;
+			u8LineAddressLoc = u8ColCpy | LCD_4TH_LINE_BASE;
 			break;
 		default:
 			break;

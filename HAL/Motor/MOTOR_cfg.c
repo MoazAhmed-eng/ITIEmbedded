@@ -30,7 +30,7 @@
 #include "Std_types.h"
 #include "DIO.h"
 
-#include "MOTOR_cfg.h"
+#include "MOTOR.h"
 #include "MOTOR_priv.h"
 
 

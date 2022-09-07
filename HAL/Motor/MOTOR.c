@@ -37,7 +37,7 @@ void MOTOR_u8voidCheck(void)
 {
 	uint8 u8CntrLoc ; 
 	uint8 u8ReadLoc ;
-	for(u8CntrLoc = 0 u8CntrLoc < MOTOR_MAX_NUM ; u8CntrLoc++)
+	for(u8CntrLoc = 0 ;  u8CntrLoc   < MOTOR_MAX_NUM ; u8CntrLoc++)
 	{
 		DIO_enuReadPinDir(MOTOR_astrCfg[u8CntrLoc].u8VccPinMapping,&u8ReadLoc);
 		if(u8ReadLoc == DIO_u8OUTPUT)
@@ -76,7 +76,7 @@ void MOTOR_voidInit(void)
 {
 	MOTOR_u8voidCheck();
 	uint8 u8CntrLoc ; 
-	for(u8CntrLoc = 0 u8CntrLoc < MOTOR_MAX_NUM ; u8CntrLoc++)
+	for(u8CntrLoc = 0 ; u8CntrLoc < MOTOR_MAX_NUM ; u8CntrLoc++)
 	{
 		if(MOTOR_astrCfg[u8CntrLoc].u8InitializationState == INIT_PASSED)
 		{
@@ -111,7 +111,7 @@ tenuErrorStatus MOTOR_enuSetMode(uint8 u8MotorNumCpy, uint8 u8ModeCpy)
 	
 	if(u8MotorNumCpy < MOTOR_MAX_NUM)
 	{
-		if(MOTOR_astrCfg[u8CntrLoc].u8InitializationState == INIT_PASSED)
+		if(MOTOR_astrCfg[u8MotorNumCpy].u8InitializationState == INIT_PASSED)
 		{
 			switch(u8ModeCpy)
 			{
@@ -132,7 +132,7 @@ tenuErrorStatus MOTOR_enuSetMode(uint8 u8MotorNumCpy, uint8 u8ModeCpy)
 				break;
 			}
 		}
-		else if(MOTOR_astrCfg[u8CntrLoc].u8InitializationState == INIT_FAILED)
+		else if(MOTOR_astrCfg[u8MotorNumCpy].u8InitializationState == INIT_FAILED)
 		{
 			enuErrorStateLoc = E_NOK;
 		}

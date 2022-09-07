@@ -14,4 +14,6 @@ void EXTINT0_voidDisable(void);
 
 void EXTINT0_voidSetCallBack(pf pfCallbackCpy);
 
+void EXTINT0_voidSetSenseValue(uint8 u8SenseValueCpy);
+
 #endif

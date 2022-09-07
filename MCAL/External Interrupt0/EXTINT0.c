@@ -47,7 +47,21 @@ void EXTINT0_voidSetCallBack(pf pfCallbackCpy)
 	EXTINT0_pfCallback = pfCallbackCpy;
 }
 
-
+void EXTINT0_voidSetSenseValue(uint8 u8SenseValueCpy)
+{
+	switch(u8SenseValueCpy)
+	{
+		case FALLING_EDGE:
+			CLR_BIT(MCUCR,0) ; 
+			SET_BIT(MCUCR,1) ;
+		break;
+		case RISING_EDGE:
+			SET_BIT(MCUCR,0) ; 
+			SET_BIT(MCUCR,1) ;
+		break;
+		
+	}
+}
 
 void  __vector_1(void) __attribute__((signal,used)); // It is volatile called by hardware not software
 void  __vector_1(void)
